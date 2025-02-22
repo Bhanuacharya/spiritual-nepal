@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { Video360, Play } from 'lucide-react';
+import { Video, Play } from 'lucide-react';
 
 interface VirtualTourProps {
   title: string;
@@ -13,34 +13,39 @@ export default function VirtualTour({ title, tourUrl, thumbnailUrl }: VirtualTou
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <>
-      <Button 
+    <div className="relative inline-block">
+      <div 
+        className="relative cursor-pointer group"
         onClick={() => setIsOpen(true)}
-        className="flex items-center gap-2"
-        variant="outline"
       >
-        <Video360 className="h-5 w-5" />
-        Take Virtual Tour
-      </Button>
+        <img 
+          src={thumbnailUrl} 
+          alt={title}
+          className="rounded-lg w-full max-w-md mx-auto"
+        />
+        <div className="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition-colors flex items-center justify-center rounded-lg">
+          <Play className="h-16 w-16 text-white" />
+        </div>
+      </div>
 
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogContent className="max-w-4xl">
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2">
-              <Video360 className="h-5 w-5" />
+              <Video className="h-5 w-5" />
               {title} - Virtual Tour
             </DialogTitle>
           </DialogHeader>
           <div className="aspect-video relative">
             <iframe
               src={tourUrl}
-              className="w-full h-full"
+              className="w-full h-full rounded-lg"
               allowFullScreen
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             />
           </div>
         </DialogContent>
       </Dialog>
-    </>
+    </div>
   );
 }

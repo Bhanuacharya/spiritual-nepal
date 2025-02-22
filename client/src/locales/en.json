@@ -2,48 +2,32 @@
   "nav": {
     "destinations": "Destinations",
     "contact": "Contact",
-    "toggleTheme": "Toggle theme"
+    "toggleTheme": "Toggle theme",
+    "language": "Change language"
   },
   "hero": {
     "title": "Discover Nepal's Spiritual Heritage",
-    "subtitle": "Embark on a journey through ancient temples, monasteries, and sacred sites that have inspired seekers for centuries."
-  },
-  "activities": {
-    "title": "Activities We Offer",
-    "subtitle": "Explore our range of transformative spiritual experiences",
-    "meditation": {
-      "title": "Meditation Retreats",
-      "description": "Find inner peace through guided meditation sessions in ancient monasteries."
-    },
-    "pilgrimage": {
-      "title": "Pilgrimages",
-      "description": "Journey to sacred sites and temples across Nepal's spiritual landscape."
-    },
-    "buddhist": {
-      "title": "Buddhist Studies",
-      "description": "Learn from Buddhist scholars and participate in traditional teachings."
-    },
-    "yoga": {
-      "title": "Yoga Sessions",
-      "description": "Practice yoga in the birthplace of ancient spiritual traditions."
-    },
-    "healing": {
-      "title": "Spiritual Healing",
-      "description": "Experience traditional healing practices and energy work."
-    },
-    "cultural": {
-      "title": "Cultural Immersion",
-      "description": "Live and learn alongside local spiritual communities."
+    "subtitle": "Embark on a journey through ancient temples, monasteries, and sacred sites that have inspired seekers for centuries.",
+    "exploreButton": "Explore Sacred Sites",
+    "virtualTour": {
+      "pashupatinath": "Pashupatinath Temple Virtual Tour",
+      "viewTour": "View Virtual Tour"
     }
   },
-  "bestSellers": {
-    "title": "Our Best Sellers for 2025",
-    "subtitle": "Discover our most popular spiritual journeys and transformative experiences"
+  "destinations": {
+    "title": "Sacred Destinations",
+    "filters": {
+      "all": "All",
+      "temple": "Temples",
+      "monastery": "Monasteries",
+      "meditation": "Meditation Centers",
+      "yoga": "Yoga Retreats"
+    }
   },
   "common": {
+    "loading": "Loading...",
+    "book": "Book Now",
     "learnMore": "Learn More",
-    "bookNow": "Book Now",
-    "inquireNow": "Inquire Now",
-    "loading": "Loading..."
+    "viewDetails": "View Details"
   }
 }
