@@ -1,17 +1,26 @@
+import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "wouter";
 import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
-import type { Destination } from "@shared/schema";
+import type { Destination, Package } from "@shared/schema";
+import PackageCard from "@/components/package-card";
+import ReviewSection from "@/components/review-section";
+import BookingDialog from "@/components/booking-dialog";
 
 export default function DestinationPage() {
   const { id } = useParams();
-  
-  const { data: destination, isLoading } = useQuery<Destination>({
+  const [selectedPackage, setSelectedPackage] = useState<Package | null>(null);
+
+  const { data: destination, isLoading: destinationLoading } = useQuery<Destination>({
     queryKey: [`/api/destinations/${id}`]
   });
 
-  if (isLoading) {
+  const { data: packages = [], isLoading: packagesLoading } = useQuery<Package[]>({
+    queryKey: [`/api/destinations/${id}/packages`]
+  });
+
+  if (destinationLoading || packagesLoading) {
     return (
       <div className="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8 space-y-8">
         <Skeleton className="h-64 w-full" />
@@ -41,7 +50,7 @@ export default function DestinationPage() {
         {destination.location}
       </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
         <Card>
           <CardContent className="pt-6">
             <h2 className="text-xl font-semibold mb-4">Best Time to Visit</h2>
@@ -64,10 +73,33 @@ export default function DestinationPage() {
         </Card>
       </div>
 
-      <div className="mt-8">
+      <div className="mb-12">
         <h2 className="text-2xl font-semibold mb-4">About</h2>
         <p className="text-lg leading-relaxed">{destination.description}</p>
       </div>
+
+      <div className="mb-12">
+        <h2 className="text-2xl font-semibold mb-8">Available Packages</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {packages.map((package_) => (
+            <PackageCard
+              key={package_.id}
+              package_={package_}
+              onBook={() => setSelectedPackage(package_)}
+            />
+          ))}
+        </div>
+      </div>
+
+      <ReviewSection destinationId={parseInt(id)} />
+
+      {selectedPackage && (
+        <BookingDialog
+          package_={selectedPackage}
+          open={!!selectedPackage}
+          onOpenChange={(open) => !open && setSelectedPackage(null)}
+        />
+      )}
     </div>
   );
 }
