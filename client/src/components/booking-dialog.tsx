@@ -34,7 +34,7 @@ export default function BookingDialog({
   onOpenChange,
 }: BookingDialogProps) {
   const { toast } = useToast();
-  
+
   const form = useForm({
     resolver: zodResolver(insertBookingSchema),
     defaultValues: {
@@ -45,9 +45,9 @@ export default function BookingDialog({
       packageId: package_.id
     }
   });
-  
+
   const mutation = useMutation({
-    mutationFn: async (data: typeof form.getValues) => {
+    mutationFn: async (data: any) => {
       await apiRequest("POST", `/api/packages/${package_.id}/book`, data);
     },
     onSuccess: () => {
@@ -73,7 +73,7 @@ export default function BookingDialog({
         <DialogHeader>
           <DialogTitle>Book {package_.name}</DialogTitle>
         </DialogHeader>
-        
+
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit((data) => mutation.mutate(data))}
@@ -92,7 +92,7 @@ export default function BookingDialog({
                 </FormItem>
               )}
             />
-            
+
             <FormField
               control={form.control}
               name="email"
@@ -106,7 +106,7 @@ export default function BookingDialog({
                 </FormItem>
               )}
             />
-            
+
             <FormField
               control={form.control}
               name="date"
@@ -120,7 +120,7 @@ export default function BookingDialog({
                 </FormItem>
               )}
             />
-            
+
             <FormField
               control={form.control}
               name="persons"
@@ -139,7 +139,7 @@ export default function BookingDialog({
                 </FormItem>
               )}
             />
-            
+
             <Button
               type="submit"
               className="w-full"

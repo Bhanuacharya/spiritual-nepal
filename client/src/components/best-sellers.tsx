@@ -1,9 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
 import type { Package } from "@shared/schema";
 import PackageCard from "./package-card";
+import BookingDialog from "./booking-dialog";
 import { Skeleton } from "@/components/ui/skeleton";
 
 export default function BestSellers() {
+  const [selectedPackage, setSelectedPackage] = useState<Package | null>(null);
+
   const { data: packages, isLoading } = useQuery<Package[]>({
     queryKey: ["/api/destinations/1/packages"]
   });
@@ -15,7 +19,7 @@ export default function BestSellers() {
         <p className="text-muted-foreground mb-8">
           Discover our most popular spiritual journeys and transformative experiences
         </p>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {isLoading ? (
             Array(3).fill(0).map((_, i) => (
@@ -30,11 +34,19 @@ export default function BestSellers() {
               <PackageCard
                 key={package_.id}
                 package_={package_}
-                onBook={() => {}}
+                onBook={() => setSelectedPackage(package_)}
               />
             ))
           )}
         </div>
+
+        {selectedPackage && (
+          <BookingDialog
+            package_={selectedPackage}
+            open={!!selectedPackage}
+            onOpenChange={(open) => !open && setSelectedPackage(null)}
+          />
+        )}
       </div>
     </section>
   );
