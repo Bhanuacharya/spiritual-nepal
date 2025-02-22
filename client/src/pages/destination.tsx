@@ -50,32 +50,37 @@ export default function DestinationPage() {
         {destination.location}
       </p>
 
+      <div className="mb-12">
+        <h2 className="text-2xl font-semibold mb-4">About</h2>
+        <p className="text-lg leading-relaxed">{destination.description}</p>
+      </div>
+
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
         <Card>
           <CardContent className="pt-6">
             <h2 className="text-xl font-semibold mb-4">Best Time to Visit</h2>
-            <p>{destination.bestTimeToVisit}</p>
+            <p className="text-muted-foreground">{destination.bestTimeToVisit}</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardContent className="pt-6">
             <h2 className="text-xl font-semibold mb-4">Cultural Etiquette</h2>
-            <p>{destination.culturalEtiquette}</p>
+            <p className="text-muted-foreground">{destination.culturalEtiquette}</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardContent className="pt-6">
             <h2 className="text-xl font-semibold mb-4">Nearby Accommodations</h2>
-            <p>{destination.nearbyAccommodations}</p>
+            <p className="text-muted-foreground">{destination.nearbyAccommodations}</p>
           </CardContent>
         </Card>
       </div>
 
       <div className="mb-12">
-        <h2 className="text-2xl font-semibold mb-4">About</h2>
-        <p className="text-lg leading-relaxed">{destination.description}</p>
+        <h2 className="text-2xl font-semibold mb-8">Visitor Reviews</h2>
+        <ReviewSection destinationId={parseInt(id)} />
       </div>
 
       <div className="mb-12">
@@ -90,8 +95,6 @@ export default function DestinationPage() {
           ))}
         </div>
       </div>
-
-      <ReviewSection destinationId={parseInt(id)} />
 
       {selectedPackage && (
         <BookingDialog
