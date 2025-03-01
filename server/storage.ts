@@ -53,26 +53,88 @@ export class MemStorage implements IStorage {
     this.bookingCurrentId = 1;
 
     // Add sample destinations
+    // Make sure the destinations have all required fields
     const sampleDestinations: InsertDestination[] = [
       {
         name: "Pashupatinath Temple",
         type: "temple",
-        description: "One of the most sacred Hindu temples dedicated to Lord Shiva",
         location: "Kathmandu",
-        imageUrl: "https://images.unsplash.com/photo-1544735716-87fa59a45b4e",
-        bestTimeToVisit: "October to March",
-        culturalEtiquette: "Remove shoes, no leather items, proper attire required",
-        nearbyAccommodations: "Hotel Shanker, Hotel Annapurna"
+        description: "One of the most sacred Hindu temples dedicated to Lord Shiva, located on the banks of the Bagmati River.",
+        imageUrl: "/images/pashupatinath.jpg",
+        bestTimeToVisit: "February to May, September to November",
+        culturalEtiquette: "Remove shoes before entering temple premises. Non-Hindus can observe from outside the main temple.",
+        nearbyAccommodations: "Various hotels in Kathmandu, 3-5 km from the temple"
+      },
+      {
+        name: "Boudhanath Stupa",
+        type: "monastery",
+        location: "Kathmandu",
+        description: "One of the largest spherical stupas in Nepal and a UNESCO World Heritage Site, important place for Tibetan Buddhism.",
+        imageUrl: "/images/boudhanath.jpg",
+        bestTimeToVisit: "October to December",
+        culturalEtiquette: "Walk clockwise around the stupa. Respectful attire recommended.",
+        nearbyAccommodations: "Guest houses and hotels around Boudhanath area"
+      },
+      // Add new destinations here
+      {
+        name: "Swayambhunath Temple",
+        type: "temple",
+        location: "Kathmandu",
+        description: "Also known as the Monkey Temple, this ancient religious complex sits atop a hill in the Kathmandu Valley and offers panoramic views of the city.",
+        imageUrl: "/images/swayambhunath.jpg",
+        bestTimeToVisit: "March to May, September to November",
+        culturalEtiquette: "Modest dress recommended. Remove shoes at designated areas.",
+        nearbyAccommodations: "Hotels in Kathmandu, 2-4 km from the temple"
       },
       {
         name: "Kopan Monastery",
         type: "monastery",
-        description: "A Tibetan Buddhist monastery offering meditation and Buddhism courses",
-        location: "Kopan Hill, Kathmandu",
-        imageUrl: "https://images.unsplash.com/photo-1706187243907-20b4a3944a41",
+        location: "Kathmandu",
+        description: "A Tibetan Buddhist monastery that offers meditation and Buddhism courses for visitors seeking spiritual growth.",
+        imageUrl: "/images/kopan.jpg",
+        bestTimeToVisit: "Year-round, special courses in November-December",
+        culturalEtiquette: "Silence in meditation halls. Modest dress required.",
+        nearbyAccommodations: "On-site accommodation available for course participants"
+      },
+      {
+        name: "Lumbini",
+        type: "temple",
+        location: "Lumbini",
+        description: "The birthplace of Lord Buddha and a UNESCO World Heritage Site featuring numerous temples and monasteries from different Buddhist countries.",
+        imageUrl: "/images/lumbini.jpg",
+        bestTimeToVisit: "October to April",
+        culturalEtiquette: "Respectful behavior and modest clothing. No loud noises in sacred areas.",
+        nearbyAccommodations: "Hotels and guest houses in Lumbini"
+      },
+      {
+        name: "Osho Tapoban",
+        type: "meditation center",
+        location: "Nagarjun Forest, Kathmandu",
+        description: "A forest retreat center dedicated to Osho's meditation techniques, offering a peaceful environment for spiritual seekers.",
+        imageUrl: "/images/osho-tapoban.jpg",
+        bestTimeToVisit: "September to May",
+        culturalEtiquette: "Participation in meditation sessions requires following center guidelines.",
+        nearbyAccommodations: "On-site accommodation available, or hotels in Kathmandu"
+      },
+      {
+        name: "Namo Buddha",
+        type: "monastery",
+        location: "Kavre District",
+        description: "A sacred Buddhist site where, according to legend, Buddha in a previous life sacrificed himself to feed a starving tigress and her cubs.",
+        imageUrl: "/images/namo-buddha.jpg",
+        bestTimeToVisit: "March to May, September to November",
+        culturalEtiquette: "Respect monks and ongoing practices. Photography restrictions in some areas.",
+        nearbyAccommodations: "Monastery guesthouse and nearby resorts"
+      },
+      {
+        name: "Nepal Yoga Academy",
+        type: "yoga retreat",
+        location: "Kathmandu",
+        description: "A center dedicated to authentic yoga practices, offering teacher training courses and retreats in a peaceful setting.",
+        imageUrl: "/images/nepal-yoga.jpg",
         bestTimeToVisit: "Year-round",
-        culturalEtiquette: "Modest dress, quiet observation, photography restrictions",
-        nearbyAccommodations: "Monastery Guest House, Hotel Tibet"
+        culturalEtiquette: "Follow academy guidelines during yoga sessions.",
+        nearbyAccommodations: "On-site accommodation for participants"
       }
     ];
 
